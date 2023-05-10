@@ -98,7 +98,6 @@ form.addEventListener("submit", (e) =>{
 
       // Controllo se il riquadro cliccato contiene una bomba. In caso affermativo aggiungo  a tutti i riquadri contententi bombe la classe bomb e mostro il risultato ottenuto
 
-      while (bombclicked === false) {
 
         if(bomb.includes(parseInt(this.innerHTML))) {
 
@@ -133,7 +132,6 @@ form.addEventListener("submit", (e) =>{
 
           }
         }
-      }
     });
 
     // Inserisco il riquadro creato nella griglia
