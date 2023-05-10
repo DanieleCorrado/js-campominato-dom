@@ -2,7 +2,6 @@ let form = document.getElementById("form");
 let grid = document.getElementById("play-table");
 let score = 0;
 let bombNumber = 16;
-let bombclicked = false;
 let bomb =[];
 let maxSquare = 0;
 
@@ -98,7 +97,6 @@ form.addEventListener("submit", (e) =>{
 
       // Controllo se il riquadro cliccato contiene una bomba. In caso affermativo aggiungo  a tutti i riquadri contententi bombe la classe bomb e mostro il risultato ottenuto
 
-
         if(bomb.includes(parseInt(this.innerHTML))) {
 
           elements = document.getElementsByClassName("square");
@@ -108,7 +106,6 @@ form.addEventListener("submit", (e) =>{
             if(bomb.includes(parseInt(elements[i].innerHTML))){
   
               elements[i].classList.add("bomb");
-              bombclicked = true;
   
             }
           }
