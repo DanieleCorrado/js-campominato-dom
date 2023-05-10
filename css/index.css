@@ -1,0 +1,102 @@
+/* Regole generali */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+/* Regole header */
+
+header {
+  padding: 20px;
+}
+
+header.row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Regole sezione sinistra header */
+
+header #logo {
+  align-items: center;
+}
+
+header img {
+  width: 50px;
+}
+
+header h1 {
+  margin-left: 30px;
+}
+
+header span {
+  margin-right: 10px;
+}
+
+/* Regole sezione destra header */
+
+header select {
+  margin-right: 10px;
+}
+
+header button {
+  padding: 0 15px;
+}
+
+button, select {
+  border-radius: 5px;
+}
+
+/* Regole main */
+
+main {
+  background-color: rgb(127, 255, 212);
+  padding: 30px;
+  display: none;
+}
+
+/* Regole griglia */
+
+#play-table {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#score {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Regole riguadri griglia */
+
+.square {
+  width: calc(100% / 10);
+  height: 60px;
+  border: 1px solid black;
+}
+
+.clicked {
+  background-color: skyblue;
+}
+
+.bomb {
+  background-color: red;
+}
+
+/* Regole footer */
+
+footer {
+  display: none;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
+}
