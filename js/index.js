@@ -2,12 +2,17 @@ let form = document.getElementById("form");
 let grid = document.getElementById("play-table");
 let score = 0;
 let bombNumber = 16;
+let bombclicked = false;
 let bomb =[];
 let maxSquare = 0;
 
 // Attendo che il pulsante venga premuto dall'utente
 
 form.addEventListener("submit", (e) =>{
+
+  document.getElementById("play-table").innerHTML = "";
+
+  document.getElementById("footer").style.display = "none";
 
   e.preventDefault();
 
@@ -19,7 +24,7 @@ form.addEventListener("submit", (e) =>{
 
   // Imposto il display mode della griglia di gioco
 
-  document.getElementById("table").style.display = "flex";
+  document.getElementById("table").style.display = "block";
 
   document.getElementById("footer").style.display = "block";
 
@@ -83,7 +88,7 @@ form.addEventListener("submit", (e) =>{
       newSquare.style.width = "calc(100% / 7)";
       
     }
-
+  
 
 
     // Controllo se l'utente clicca su un riquadro della griglia e nel caso avvenga aggiungo la classe "clicked"
@@ -91,26 +96,43 @@ form.addEventListener("submit", (e) =>{
     newSquare.addEventListener("click", function () {
 
 
-      if((bomb.includes(parseInt(this.innerHTML))) || score === (maxSquare - bomb.length)) {
-        
-        this.classList.add("bomb");
-        
-        document.getElementById("play-table").innerHTML = "";
+      // Controllo se il riquadro cliccato contiene una bomba. In caso affermativo aggiungo  a tutti i riquadri contententi bombe la classe bomb e mostro il risultato ottenuto
 
-        document.getElementById("footer").style.display = "none";
+      while (bombclicked === false) {
 
-        document.getElementById("score").style.display = "block";
+        if(bomb.includes(parseInt(this.innerHTML))) {
 
-        document.getElementById("score").innerHTML += ` Hai totalizzato un punteggio di ${score}`;
-        score = 0;
+          elements = document.getElementsByClassName("square");
+  
+          for(let i = 0; i < maxSquare; i++) {
+  
+            if(bomb.includes(parseInt(elements[i].innerHTML))){
+  
+              elements[i].classList.add("bomb");
+              bombclicked = true;
+  
+            }
+          }
+          
+          document.getElementById("score").style.display = "block";
+  
+          document.getElementById("score").innerHTML += ` Hai totalizzato un punteggio di ${score}`;
+          score = 0;
+  
+        } else {
+  
+          this.classList.add("clicked");
+          value = this.innerHTML;
+          score += 1;
+          if(score === (maxSquare - bomb.length)) {
+            
+            document.getElementById("score").style.display = "block";
+  
+            document.getElementById("score").innerHTML += ` Hai totalizzato un punteggio di ${score}`;
+            score = 0;
 
-      } else {
-
-        this.classList.add("clicked");
-        value = this.innerHTML;
-        score += 1;
-        console.log(value);
-
+          }
+        }
       }
     });
 
